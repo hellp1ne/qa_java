@@ -4,6 +4,12 @@ import java.util.List;
 
 public class Lion {
 
+    private Predator predator;
+
+    public Lion(Predator predator) {
+        this.predator = predator;
+    }
+
     boolean hasMane;
 
     public Lion(String sex) throws Exception {
@@ -16,10 +22,8 @@ public class Lion {
         }
     }
 
-    Feline feline = new Feline();
-
     public int getKittens() {
-        return feline.getKittens();
+        return predator.getKittens();
     }
 
     public boolean doesHaveMane() {
@@ -27,6 +31,7 @@ public class Lion {
     }
 
     public List<String> getFood() throws Exception {
-        return feline.getFood("Хищник");
+        return predator.eatMeat();
     }
+
 }
