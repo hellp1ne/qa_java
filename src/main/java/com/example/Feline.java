@@ -4,6 +4,12 @@ import java.util.List;
 
 public class Feline extends Animal implements Predator {
 
+    Predator predator;
+
+    public Feline(Predator predator) {
+        this.predator = predator;
+    }
+
     @Override
     public List<String> eatMeat() throws Exception {
         return getFood("Хищник");
@@ -14,12 +20,10 @@ public class Feline extends Animal implements Predator {
         return "Кошачьи";
     }
 
-    @Override
     public int getKittens() {
         return getKittens(1);
     }
 
-    @Override
     public int getKittens(int kittensCount) {
         return kittensCount;
     }

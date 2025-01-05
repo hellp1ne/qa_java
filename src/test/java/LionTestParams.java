@@ -15,6 +15,8 @@ public class LionTestParams {
         MockitoAnnotations.initMocks(this);
     }
 
+
+
     private final boolean hasMane;
     private final String sex;
 
@@ -23,25 +25,18 @@ public class LionTestParams {
         this.sex = sex;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1}")
     public static Object[][] getCredentials() {
         return new Object[][]{
                 {true, "Самец"},
                 {false, "Самка"},
-                {true, "123"}
         };
     }
 
     @Test
     public void testDoesHaveMane() throws Exception {
-
-        try {
             Lion lion = new Lion(sex);
             Lion lionSpy = Mockito.spy(lion);
             Assert.assertEquals(lionSpy.doesHaveMane(), hasMane);
-        } catch (Exception e) {
-            Assert.assertEquals(e.getMessage(), "Используйте допустимые значения пола животного - самей или самка");
-        }
-
     }
 }

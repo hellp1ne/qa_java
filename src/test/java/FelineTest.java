@@ -1,9 +1,8 @@
-import com.example.Cat;
 import com.example.Feline;
+import com.example.Predator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
@@ -17,7 +16,9 @@ public class FelineTest {
     }
 
     @Spy
-    Feline feline;
+    Predator predator;
+
+    Feline feline = new Feline(predator);
 
     @Test
     public void testEatMeat() throws Exception {
@@ -32,7 +33,6 @@ public class FelineTest {
     @Test
     public void testGetKittens() {
         Assert.assertEquals(1, feline.getKittens());
-        Mockito.verify(feline, Mockito.times(1)).getKittens(1);
     }
 
     @Test

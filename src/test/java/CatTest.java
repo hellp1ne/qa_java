@@ -3,8 +3,9 @@ import com.example.Feline;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class CatTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Spy
+    @Mock
     Feline feline;
 
     @Test
@@ -27,7 +28,7 @@ public class CatTest {
     @Test
     public void testGetFood() throws Exception {
         Cat cat = new Cat(feline);
+        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Assert.assertEquals(cat.getFood(), List.of("Животные", "Птицы", "Рыба"));
     }
-
 }
